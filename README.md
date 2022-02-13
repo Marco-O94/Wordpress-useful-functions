@@ -11,7 +11,6 @@ Useful links below.
 - [WP Grid Builder](https://wpgridbuilder.com/)
 - [Slider Revolution](https://www.sliderrevolution.com/)
 ## Wordpress Links
-
 - [How query function works](https://www.rarst.net/wordpress/wordpress-query-functions/)
 - [Wordpress Core load](https://www.rarst.net/wordpress/wordpress-core-load/)
 - [Wordpress CheatSheet](https://cdn.makeawebsitehub.com/wp-content/uploads/2015/09/2015-ultimate-wordpress-cheat-sheet-ver2.jpg)
@@ -87,3 +86,6 @@ Useful links below.
 
 ## Ispirational Designs
 [CollectUI](https://collectui.com/)
+
+## Most Famous logos
+[SeekLogo](https://seeklogo.com/free-vector-logos/svg)
