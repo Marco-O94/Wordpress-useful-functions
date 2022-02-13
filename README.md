@@ -13,6 +13,28 @@ Useful links below.
 - [Wordpress CheatSheet](https://cdn.makeawebsitehub.com/wp-content/uploads/2015/09/2015-ultimate-wordpress-cheat-sheet-ver2.jpg)
 - [Wordpress Metabox Generator](https://jeremyhixon.com/tool/wordpress-meta-box-generator/)
 
+### WP Query Parameters
+- [Author Parameters](https://developer.wordpress.org/reference/classes/wp_query/#author-parameters)
+- [Category Parameters](https://developer.wordpress.org/reference/classes/wp_query/#category-parameters)
+- [Tag Parameters](https://developer.wordpress.org/reference/classes/wp_query/#tag-parameters)
+- [Taxonomy Parameters](https://developer.wordpress.org/reference/classes/wp_query/#taxonomy-parameters)
+- [Search Parameters](https://developer.wordpress.org/reference/classes/wp_query/#search-parameters)
+- [Post/Page Parameters](https://developer.wordpress.org/reference/classes/wp_query/#post-page-parameters)
+- [Password Parameters](https://developer.wordpress.org/reference/classes/wp_query/#password-parameters)
+- [Post Type Parameters](https://developer.wordpress.org/reference/classes/wp_query/#post-type-parameters)
+- [Post Status Parameters](https://developer.wordpress.org/reference/classes/wp_query/#status-parameters)
+- [Comments Parameters](https://developer.wordpress.org/reference/classes/wp_query/#comment-parameters)
+- [Pagination Parameters](https://developer.wordpress.org/reference/classes/wp_query/#pagination-parameters)
+- [Order and Orderby Parameters](https://developer.wordpress.org/reference/classes/wp_query/#order-orderby-parameters)
+- [Date Parameters](https://developer.wordpress.org/reference/classes/wp_query/#date-parameters)
+- [Custom Field Parameters](https://developer.wordpress.org/reference/classes/wp_query/#custom-field-post-meta-parameters)
+- [Permissions Parameters](https://developer.wordpress.org/reference/classes/wp_query/#permission-parameters)
+- [Mime Types Parameters](https://developer.wordpress.org/reference/classes/wp_query/#mime-type-parameters)
+- [Caching Parameters](https://developer.wordpress.org/reference/classes/wp_query/#caching-parameters)
+
+---
+*If there is a sublist in a list point, or there is an var(array) you need to create a multiple dimension array.*
+
 ## Elementor links
 - [Elementor resources](https://trello.com/b/52NXAeg2/elementor-resources-for-and-by-the-community)
 - [Elementor Selectors](https://glyphbox.be/downloads/elementor_widgets_classname_reference1.0.pdf)
