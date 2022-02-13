@@ -4,6 +4,21 @@
 * Here you will find every useful application of wordpress code, enjoy!
 * =====================================================================*/
 
+/*============================== KEYWORDS ==============================
+* You can use those keywords in your code editor to easily find what you seek.
+* - REGISTER STYLE FILES
+* - REGISTER SCRIPT FILES
+* - CREATE A SHORTCODE
+* - SHORTCODE + ACF
+* - WP QUERY
+* - WP QUERY + ACF
+* - REGISTER A POST TYPE
+* - CHANGE WORDPRESS LOGIN PANEL LOGO
+*/
+
+
+
+
 /*===================== REGISTER STYLE FILES =====================*/ 
 function add_my_style() {
     wp_register_style( 'my_css', get_stylesheet_directory_uri() . '/css/myStyle.css' ); //Choose a name for your style, use a different name from previous registered styles.
@@ -19,14 +34,14 @@ function add_my_customScript() {
 } 
 add_action( 'wp_enqueue_scripts', 'add_my_customScript' ); //Second add_action value must be the function value that register the style.
 
-/*===================== SHORTCODE =====================*/ 
+/*===================== CREATE A SHORTCODE =====================*/ 
 function my_function() {
 	// Your Code here
 }
 add_shortcode('tag_name', 'my_function');
 
 
-/* ======== SHORTCODE + ACF ======== */
+/* ======== SHORTCODE + ACF (An Example) ======== */
 /* It uses lightbox.js and some grid css */
 
 function dynamic_gallery() {
@@ -49,6 +64,68 @@ function dynamic_gallery() {
 }
 add_shortcode('custom-gallery', 'dynamic_gallery');
 
+/*===================== WP QUERY =====================
+* First of all you need arguments for your query, so declare an array with what you need.
+* You can find array parameters list with relative links in the README file. */
+
+/* A complete example of WP Query below */
+
+// WP_Query arguments
+$args = array(
+    'post_type'              => array('post'), // use any for any kind of post type, custom post type slug for custom post type
+    'post_status'            => array('publish'), // Also support: pending, draft, auto-draft, future, private, inherit, trash, any
+    'posts_per_page'         => '5', // use -1 for all post
+    'order'                  => 'DESC', // Also support: ASC
+    'orderby'                => 'date', // Also support: none, rand, id, title, slug, modified, parent, menu_order, comment_count
+    'tax_query'              => array(
+        'relation' => 'OR', // Use AND for taking result on both condition true
+        array(
+            'taxonomy'         => 'category', // taxonomy slug
+            'terms'            => array(1, 2), // term ids
+            'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
+            'operator'         => 'IN', // Also support: AND, NOT IN, EXISTS, NOT EXISTS
+            'include_children' => true,
+        ),
+        array(
+            'taxonomy'         => 'custom-category', // taxonomy slug
+            'terms'            => array(1, 2), // term ids
+            'field'            => 'term_id', // Also support: slug, name, term_taxonomy_id
+            'operator'         => 'IN', // Also support: slug, name, term_taxonomy_id
+            'include_children' => true,
+        ),
+    ),
+    'meta_query'             => array(
+        'relation' => 'OR', // Use AND for taking result on both condition true
+        array(
+            'key'     => 'meta-1', // any meta key
+            'value'   => 'value-1', // value under that meta
+            'compare' => 'LIKE', // Also support: =, !=, >, >=, <, <=, NOT LIKE, IN, NOT IN, BETWEEN, NOT BETWEEN, EXISTS, NOT EXISTS, REGEXP, NOT REGEXP, RLIKE
+            'type'    => 'CHAR', // Also support: NUMERIC, BINARY, DATE, DATETIME, DECIMAL, SIGNED, UNSIGNED, TIME
+        ),
+        array(
+            'key'     => 'meta-2', // any meta key
+            'value'   => 'value-2', // value under that meta
+            'compare' => 'LIKE', // Also support: =, !=, >, >=, <, <=, NOT LIKE, IN, NOT IN, BETWEEN, NOT BETWEEN, EXISTS, NOT EXISTS, REGEXP, NOT REGEXP, RLIKE
+            'type'    => 'CHAR', // Also support: NUMERIC, BINARY, DATE, DATETIME, DECIMAL, SIGNED, UNSIGNED, TIME
+        ),
+    ),
+);
+ 
+// The Query
+$query = new WP_Query($args);
+ 
+// The Loop
+if ($query->have_posts()) {
+    while ($query->have_posts()) {
+        $query->the_post();
+        // do something
+    }
+} else {
+    // no posts found
+}
+ 
+// Restore original Post Data
+wp_reset_postdata();
 
 
 /* ======== WP QUERY + ACF ======== */
@@ -152,4 +229,26 @@ function wpdocs_codex_book_init() {
 add_action( 'init', 'wpdocs_codex_book_init' );
 
 
+/*===================== CHANGE WORDPRESS LOGIN PANEL LOGO =====================*/
+
+function my_login_logo() { 
+    $uploads = wp_upload_dir(); 
+    ?>
+        <style type="text/css">
+            #login h1 a, .login h1 a {
+                background-image: url('<?php echo $uploads['baseurl'] . '/2021/10/myLogo.svg?>'; ?>');
+                padding-right: 3px;
+            height:100px;
+            width:200px;
+            background-size: 320px auto;
+            background-repeat: no-repeat;
+                background-size:contain;
+                background-position: center;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        </style>
+    <?php
+    }
+    add_action( 'login_enqueue_scripts', 'my_login_logo' );
 /*===================== CODING IN PROGRESS =====================*/ 
