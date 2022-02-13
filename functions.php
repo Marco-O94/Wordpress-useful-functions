@@ -4,6 +4,20 @@
 * Here you will find every useful application of wordpress code, enjoy!
 * =====================================================================*/
 
+/*===================== REGISTER STYLE FILES =====================*/ 
+function add_my_style() {
+    wp_register_style( 'my_css', get_stylesheet_directory_uri() . '/css/myStyle.css' ); //Choose a name for your style, use a different name from previous registered styles.
+    wp_enqueue_style( 'my_css' );
+}
+add_action( 'wp_enqueue_scripts', 'add_my_style', 20 ); //Second add_action value must be the function value that register the style. 
+
+/*===================== REGISTER SCRIPT FILES =====================*/ 
+
+function add_my_customScript() {
+    wp_register_script('customScript', get_stylesheet_directory_uri() . '/js/customScript.js');
+    wp_enqueue_script('customScript');
+} 
+add_action( 'wp_enqueue_scripts', 'add_my_customScript' ); //Second add_action value must be the function value that register the style.
 
 /*===================== SHORTCODE =====================*/ 
 function my_function() {
