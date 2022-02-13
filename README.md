@@ -86,9 +86,6 @@ Useful links below.
 
 ## Ispirational Designs
 [CollectUI](https://collectui.com/)
-<<<<<<< HEAD
 
 ## Most Famous logos
 [SeekLogo](https://seeklogo.com/free-vector-logos/svg)
-=======
->>>>>>> 251236838cd3464adb3a704c6df77c0f57cb475e
