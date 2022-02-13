@@ -36,7 +36,7 @@ Useful links below.
 - [Caching Parameters](https://developer.wordpress.org/reference/classes/wp_query/#caching-parameters)
 
 ---
-*If there is a sublist in a list point, or there is an var(array) you need to create a multiple dimension array.*
+*If there is a sublist in a list point, or there is a var(array) you need to create a multiple dimension array.*
 
 ## Elementor links
 - [Elementor resources](https://trello.com/b/52NXAeg2/elementor-resources-for-and-by-the-community)
@@ -86,6 +86,9 @@ Useful links below.
 
 ## Ispirational Designs
 [CollectUI](https://collectui.com/)
+<<<<<<< HEAD
 
 ## Most Famous logos
 [SeekLogo](https://seeklogo.com/free-vector-logos/svg)
+=======
+>>>>>>> 251236838cd3464adb3a704c6df77c0f57cb475e
