@@ -173,7 +173,7 @@ wp_reset_postdata();
 add_shortcode('custom_metaProducts', 'custom_products_block');
 
 
-/*===================== REGISTER A POST TYPE =====================*/ 
+/*===================== REGISTER A POST TYPE =====================*/
 
 /**
  * Register a custom post type called "book".
@@ -251,4 +251,5 @@ function my_login_logo() {
     <?php
     }
     add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
 /*===================== CODING IN PROGRESS =====================*/ 

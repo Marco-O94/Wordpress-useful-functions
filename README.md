@@ -6,6 +6,10 @@ Useful links below.
 ## Minifier for JS and CSS
 - [Minifier](https://www.minifier.org/)
 
+## Wordpress Plugins
+- [Advanced Custom Field](https://www.advancedcustomfields.com/)
+- [WP Grid Builder](https://wpgridbuilder.com/)
+- [Slider Revolution](https://www.sliderrevolution.com/)
 ## Wordpress Links
 
 - [How query function works](https://www.rarst.net/wordpress/wordpress-query-functions/)
