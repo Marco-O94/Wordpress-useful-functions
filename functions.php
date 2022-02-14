@@ -6,6 +6,7 @@
 
 /*============================== KEYWORDS ==============================
 * You can use those keywords in your code editor to easily find what you seek.
+* - WORDPRESS BASIC THINGS
 * - REGISTER STYLE FILES
 * - REGISTER SCRIPT FILES
 * - CREATE A SHORTCODE
@@ -15,6 +16,47 @@
 * - WP QUERY + ACF
 * - REGISTER A POST TYPE
 * - CHANGE WORDPRESS LOGIN PANEL LOGO
+* - SEND EMAIL WHEN POST IS PUBLISHED
+*/
+
+
+/*===================== WORDPRESS BASIC THINGS (Work in progress) =====================*/ 
+$post = get_post(); // Return the Post Object (not the array, watch out!)
+/* From now on we will call pre-composed functions with get_post in, we may call them shortcuts. You can call variables as you wish. */
+$post_id = get_the_ID(); // Return the ID(int) of a post.
+$post_type = get_post_type(); // Return the post-type(string) of the post. You can use either post_object or post_id.
+$post_meta = get_post_meta(); // Return post meta keys of the post.
+$post_title = get_the_title(); // Return post title.
+$post_content = get_the_content(); // Return post content.
+$post_parent = get_post_parent(); // Return post parent
+$post_permalink = get_permalink(); // Return post permalink with post slug in, like get_the_permalink();
+$post_permalink2 = get_post_permalink(); // Return post permalink with post type and id on url, like this: mywebsite.it/wordpresstest/?post_type=page&p=2"
+$post_status = get_post_status(); // Return post status like publish, draft or private.
+$post_excerpt = get_the_excerpt(); // Return post excerpt.
+$post_category = get_the_category(); // Return categories as objects in an array, watch out! Try var_dump(); for more info.
+$post_thumbnail = get_the_post_thumbnail(); //Return post thumbnail with wordpress layout. the_post_thumbnail(); is the same. Source function below:
+
+/*function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
+    echo get_the_post_thumbnail( null, $size, $attr );
+}*/
+
+
+/* Functions that requires post ID */
+$post_terms = get_the_terms($post->ID, 'term'); // Return post Terms.
+/*
+WP_Term Object (Below there are terms that you can use in string above.)
+(
+    [term_id] => 
+    [name] => 
+    [slug] => 
+    [term_group] => 
+    [term_taxonomy_id] => 
+    [taxonomy] => 
+    [description] => 
+    [parent] => 
+    [count] => 
+    [filter] => 
+)
 */
 
 
@@ -272,3 +314,9 @@ function my_login_logo() {
     add_action( 'publish_post', 'wpdocs_email' );
 
 /*===================== CODING IN PROGRESS =====================*/ 
+/* Next Steps:
+* - Need to end Basic Things
+* - more wp functions incoming
+* - Actions
+* - Filters
+*/
