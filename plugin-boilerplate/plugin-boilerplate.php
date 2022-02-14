@@ -1,6 +1,6 @@
 <?php 
 /**
- * Plugin Name:       My Basics Plugin
+ * Plugin Name:       Plugin BoilerPlate
  * Plugin URI:        https://example.com/plugins/the-basics/
  * Description:       Handle the basics with this plugin.
  * Version:           1.10.3
@@ -11,6 +11,6 @@
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Update URI:        https://example.com/my-plugin/
- * Text Domain:       my-basics-plugin
+ * Text Domain:       my-website
  * Domain Path:       /languages
  */
