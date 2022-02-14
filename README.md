@@ -69,6 +69,7 @@ Useful links below.
 - [VueJS](https://devhints.io/vue)
 - [ShuffleJS](https://vestride.github.io/Shuffle/)
 - [LightboxJS](https://lokeshdhakar.com/projects/lightbox2/)
+- [TippyJS](https://atomiks.github.io/tippyjs/)
 
 ## Color Palette Generators for your Website
 - [Hue](https://hue.tools/?format=hex)
