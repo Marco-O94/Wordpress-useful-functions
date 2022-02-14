@@ -9,14 +9,13 @@
 * - REGISTER STYLE FILES
 * - REGISTER SCRIPT FILES
 * - CREATE A SHORTCODE
+* - SHORTCODE WITH ATTRIBUTES
 * - SHORTCODE + ACF
 * - WP QUERY
 * - WP QUERY + ACF
 * - REGISTER A POST TYPE
 * - CHANGE WORDPRESS LOGIN PANEL LOGO
 */
-
-
 
 
 /*===================== REGISTER STYLE FILES =====================*/ 
@@ -48,6 +47,7 @@ function my_shortcode($atts) {
 }
 
 add_shortcode('test_short', 'my_shortcode');
+
 /* ======== SHORTCODE + ACF (An Example) ======== */
 /* It uses lightbox.js and some grid css */
 
