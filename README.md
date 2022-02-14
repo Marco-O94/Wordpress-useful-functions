@@ -59,6 +59,7 @@ Useful links below.
 - [Box Shadows presets](https://getcssscan.com/css-box-shadow-examples)
 - [CSS Tricks](https://css-tricks.com/)
 - [Modern CSS](https://moderncss.dev/)
+- [Curved CSS](https://cssmatic.net/css-curved-background-generator/)
 
 ## JS Libraries
 - [GranimJS](https://sarcadass.github.io/granim.js/)
