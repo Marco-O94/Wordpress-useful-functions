@@ -264,7 +264,7 @@ function my_login_logo() {
     function wpdocs_email( $post ) {
         $post_type = get_post_type($post);
         if($post_type == 'post') {
-        $contacts = 'marcooliveri94@gmail.com, gianclaudio.spena@gmail.com'; // you can convert array to string with -> echo implode(" ",$arr);
+        $contacts = 'mail@mail.it, mail2@mail.it'; // you can convert array to string with -> echo implode(" ",$arr);
         wp_mail( $friends, "Mail Title Goes Here", 'Mail Body Goes here' ); // 	wp_mail( $to, $subject, $message, $headers, $attachments );
         }
         return $post;
