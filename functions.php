@@ -313,6 +313,10 @@ function my_login_logo() {
     }
     add_action( 'publish_post', 'wpdocs_email' );
 
+
+/*===================== GET TEMPLATE PARTS (Work in progress) =====================*/
+get_template_part( 'template-parts/file', 'name', $args ); // template-parts/file-name.php
+
 /*===================== CODING IN PROGRESS =====================*/ 
 /* Next Steps:
 * - Need to end Basic Things
