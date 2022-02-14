@@ -259,4 +259,16 @@ function my_login_logo() {
     }
     add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
+/*===================== SEND EMAIL WHEN POST IS PUBLISHED =====================*/
+// You can use it with woocommerce products too, for example you want to send news about a product
+    function wpdocs_email( $post ) {
+        $post_type = get_post_type($post);
+        if($post_type == 'post') {
+        $contacts = 'marcooliveri94@gmail.com, gianclaudio.spena@gmail.com'; // you can convert array to string with -> echo implode(" ",$arr);
+        wp_mail( $friends, "Mail Title Goes Here", 'Mail Body Goes here' ); // 	wp_mail( $to, $subject, $message, $headers, $attachments );
+        }
+        return $post;
+    }
+    add_action( 'publish_post', 'wpdocs_email' );
+
 /*===================== CODING IN PROGRESS =====================*/ 
