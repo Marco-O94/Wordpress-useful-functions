@@ -40,7 +40,14 @@ function my_function() {
 }
 add_shortcode('tag_name', 'my_function');
 
+/* ======== SHORTCODE WITH ATTRIBUTES ======== */
+function my_shortcode($atts) {
+	
+	$values = $atts["tag_name"]; // Tag name is for example [test_short tag_name="myvalue"]. It will return myvalue in the $values variable.
+	echo $values;
+}
 
+add_shortcode('test_short', 'my_shortcode');
 /* ======== SHORTCODE + ACF (An Example) ======== */
 /* It uses lightbox.js and some grid css */
 
