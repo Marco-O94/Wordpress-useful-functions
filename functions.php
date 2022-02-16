@@ -14,6 +14,7 @@
 * - SHORTCODE + ACF
 * - WP QUERY
 * - WP QUERY + ACF
+* - WP QUERY + ACF (Import only products chosen in backend artisan or owner page)
 * - REGISTER A POST TYPE
 * - CHANGE WORDPRESS LOGIN PANEL LOGO
 * - SEND EMAIL WHEN POST IS PUBLISHED
@@ -206,8 +207,8 @@ $the_query = new WP_Query($args);
  
 // If posts are in, than I'll loop until the end.
 if ( $the_query->have_posts() ) {
-	echo '<ul class="products elementor-grid columns-4">' //Some elementor classes;
-    while ( $the_query->have_posts() ) {
+	echo '<ul class="products elementor-grid columns-4">'; //Some elementor classes;
+    while($the_query->have_posts() ) {
 		$the_query->the_post();
 		/* I will use default product template from woocommerce or your theme */
 		wc_get_template_part( 'content', 'product' );
@@ -220,6 +221,37 @@ if ( $the_query->have_posts() ) {
 wp_reset_postdata();
 }
 add_shortcode('custom_metaProducts', 'custom_products_block');
+
+
+/* WP QUERY + ACF (Import only products chosen in backend artisan or owner page) */
+function artisan_products_block() {
+	$artisan_id = get_field("artisan_tag");
+	$artisan_slug= $artisan_id->slug;
+	$artisan_products = get_field("artisan_products"); // Use ACF post Object field type, set it to ID, choose multi-selection.
+	// Scelgo gli argomenti per la query
+	$args = array(
+    'post_type'              => array('product'), // use any for any kind of post type, custom post type slug for custom post type
+    'post__in'				 => $artisan_products,
+	'posts_per_page'         => '4',
+	'orderby'					 => 'post__in' //This orders products by position chosen in backend.
+);
+
+$the_query = new WP_Query($args); //Starting the query with my args above.
+
+if ($artisan_products) {
+	echo '<ul class="products elementor-grid columns-4">';
+    while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		wc_get_template_part( 'content', 'product' ); //Get the woocommerce or your theme product layout.
+    }
+	echo '</ul>';
+} else {
+  echo 'No products found';
+}
+
+wp_reset_postdata();
+}
+add_shortcode('products_grid', 'artisan_products_block');
 
 
 /*===================== REGISTER A POST TYPE =====================*/
