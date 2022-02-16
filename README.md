@@ -60,6 +60,7 @@ Useful links below.
 - [CSS Tricks](https://css-tricks.com/)
 - [Modern CSS](https://moderncss.dev/)
 - [Curved CSS](https://cssmatic.net/css-curved-background-generator/)
+- [Custom Border Generator](https://css-generators.com/custom-borders/)
 
 ## JS Libraries
 - [GranimJS](https://sarcadass.github.io/granim.js/)
@@ -71,6 +72,7 @@ Useful links below.
 - [ShuffleJS](https://vestride.github.io/Shuffle/)
 - [LightboxJS](https://lokeshdhakar.com/projects/lightbox2/)
 - [TippyJS](https://atomiks.github.io/tippyjs/)
+- [LetmeScrollJS](https://github.com/BMSVieira/letmescroll.js)
 
 ## Color Palette Generators for your Website
 - [Hue](https://hue.tools/?format=hex)
@@ -79,7 +81,7 @@ Useful links below.
 
 ## Most Famous Libraries for your website
 - [Tailwind CSS](https://tailwindcss.com/)
-  - [DaisyUI](https://daisyui.com/components/navbar/)
+- [DaisyUI](https://daisyui.com/components/navbar/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Bulma](https://bulma.io/)
 
