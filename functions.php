@@ -349,6 +349,17 @@ function my_login_logo() {
 /*===================== GET TEMPLATE PARTS (Work in progress) =====================*/
 get_template_part( 'template-parts/file', 'name', $args ); // template-parts/file-name.php
 
+//example below
+$data = array(
+    'location'  => 'slider',
+    'number'    =>   3
+);
+// Passing variable to get_template_part
+get_template_part( 'templates/slider', 'full', $data ); //templates/slider-full.php
+// get data in part of template
+global $data; //dont forget use globally
+print_r($data); // output: array('location' => 'slider', 'number' => 3)
+
 /*===================== CODING IN PROGRESS =====================*/ 
 /* Next Steps:
 * - Need to end Basic Things
