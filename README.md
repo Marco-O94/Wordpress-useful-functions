@@ -73,6 +73,7 @@ Useful links below.
 - [LightboxJS](https://lokeshdhakar.com/projects/lightbox2/)
 - [TippyJS](https://atomiks.github.io/tippyjs/)
 - [LetmeScrollJS](https://github.com/BMSVieira/letmescroll.js)
+- [AutoCompleteJS](https://tarekraafat.github.io/autoComplete.js)
 
 ## Color Palette Generators for your Website
 - [Hue](https://hue.tools/?format=hex)
