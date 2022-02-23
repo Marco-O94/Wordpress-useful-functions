@@ -74,6 +74,10 @@ Useful links below.
 - [TippyJS](https://atomiks.github.io/tippyjs/)
 - [LetmeScrollJS](https://github.com/BMSVieira/letmescroll.js)
 - [AutoCompleteJS](https://tarekraafat.github.io/autoComplete.js)
+- [SplideJS](https://splidejs.com/)
+- [GlideJS](https://glidejs.com/)
+- [OwlCarouselJS](https://owlcarousel2.github.io/OwlCarousel2/)
+- [ParticleJS](https://vincentgarreau.com/particles.js/)
 
 ## Color Palette Generators for your Website
 - [Hue](https://hue.tools/?format=hex)
