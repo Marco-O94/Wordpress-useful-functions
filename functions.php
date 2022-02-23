@@ -5,7 +5,7 @@
 * =====================================================================*/
 
 /*============================== KEYWORDS ==============================
-* You can use those keywords in your code editor to easily find what you seek.
+* You can use those keywords in your code editor to easily find what you are looking for.
 * - WORDPRESS BASIC THINGS
 * - REGISTER STYLE FILES
 * - REGISTER SCRIPT FILES
