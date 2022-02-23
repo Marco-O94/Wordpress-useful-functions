@@ -360,6 +360,144 @@ get_template_part( 'templates/slider', 'full', $data ); //templates/slider-full.
 global $data; //dont forget use globally
 print_r($data); // output: array('location' => 'slider', 'number' => 3)
 
+/*===================== MEDIA HANDLE UPDATE =====================*/
+//Saves a file submitted from a POST request and create an attachment post for it.
+//Example below.
+function media_handle_upload( $file_id, $post_id, $post_data = array(), $overrides = array( 'test_form' => false ) ) {
+    $time = current_time( 'mysql' );
+    $post = get_post( $post_id );
+ 
+    if ( $post ) {
+        // The post date doesn't usually matter for pages, so don't backdate this upload.
+        if ( 'page' !== $post->post_type && substr( $post->post_date, 0, 4 ) > 0 ) {
+            $time = $post->post_date;
+        }
+    }
+ 
+    $file = wp_handle_upload( $_FILES[ $file_id ], $overrides, $time );
+ 
+    if ( isset( $file['error'] ) ) {
+        return new WP_Error( 'upload_error', $file['error'] );
+    }
+ 
+    $name = $_FILES[ $file_id ]['name'];
+    $ext  = pathinfo( $name, PATHINFO_EXTENSION );
+    $name = wp_basename( $name, ".$ext" );
+ 
+    $url     = $file['url'];
+    $type    = $file['type'];
+    $file    = $file['file'];
+    $title   = sanitize_text_field( $name );
+    $content = '';
+    $excerpt = '';
+ 
+    if ( preg_match( '#^audio#', $type ) ) {
+        $meta = wp_read_audio_metadata( $file );
+ 
+        if ( ! empty( $meta['title'] ) ) {
+            $title = $meta['title'];
+        }
+ 
+        if ( ! empty( $title ) ) {
+ 
+            if ( ! empty( $meta['album'] ) && ! empty( $meta['artist'] ) ) {
+                /* translators: 1: Audio track title, 2: Album title, 3: Artist name. */
+                $content .= sprintf( __( '"%1$s" from %2$s by %3$s.' ), $title, $meta['album'], $meta['artist'] );
+            } elseif ( ! empty( $meta['album'] ) ) {
+                /* translators: 1: Audio track title, 2: Album title. */
+                $content .= sprintf( __( '"%1$s" from %2$s.' ), $title, $meta['album'] );
+            } elseif ( ! empty( $meta['artist'] ) ) {
+                /* translators: 1: Audio track title, 2: Artist name. */
+                $content .= sprintf( __( '"%1$s" by %2$s.' ), $title, $meta['artist'] );
+            } else {
+                /* translators: %s: Audio track title. */
+                $content .= sprintf( __( '"%s".' ), $title );
+            }
+        } elseif ( ! empty( $meta['album'] ) ) {
+ 
+            if ( ! empty( $meta['artist'] ) ) {
+                /* translators: 1: Audio album title, 2: Artist name. */
+                $content .= sprintf( __( '%1$s by %2$s.' ), $meta['album'], $meta['artist'] );
+            } else {
+                $content .= $meta['album'] . '.';
+            }
+        } elseif ( ! empty( $meta['artist'] ) ) {
+ 
+            $content .= $meta['artist'] . '.';
+ 
+        }
+ 
+        if ( ! empty( $meta['year'] ) ) {
+            /* translators: Audio file track information. %d: Year of audio track release. */
+            $content .= ' ' . sprintf( __( 'Released: %d.' ), $meta['year'] );
+        }
+ 
+        if ( ! empty( $meta['track_number'] ) ) {
+            $track_number = explode( '/', $meta['track_number'] );
+ 
+            if ( isset( $track_number[1] ) ) {
+                /* translators: Audio file track information. 1: Audio track number, 2: Total audio tracks. */
+                $content .= ' ' . sprintf( __( 'Track %1$s of %2$s.' ), number_format_i18n( $track_number[0] ), number_format_i18n( $track_number[1] ) );
+            } else {
+                /* translators: Audio file track information. %s: Audio track number. */
+                $content .= ' ' . sprintf( __( 'Track %s.' ), number_format_i18n( $track_number[0] ) );
+            }
+        }
+ 
+        if ( ! empty( $meta['genre'] ) ) {
+            /* translators: Audio file genre information. %s: Audio genre name. */
+            $content .= ' ' . sprintf( __( 'Genre: %s.' ), $meta['genre'] );
+        }
+ 
+        // Use image exif/iptc data for title and caption defaults if possible.
+    } elseif ( 0 === strpos( $type, 'image/' ) ) {
+        $image_meta = wp_read_image_metadata( $file );
+ 
+        if ( $image_meta ) {
+            if ( trim( $image_meta['title'] ) && ! is_numeric( sanitize_title( $image_meta['title'] ) ) ) {
+                $title = $image_meta['title'];
+            }
+ 
+            if ( trim( $image_meta['caption'] ) ) {
+                $excerpt = $image_meta['caption'];
+            }
+        }
+    }
+ 
+    // Construct the attachment array.
+    $attachment = array_merge(
+        array(
+            'post_mime_type' => $type,
+            'guid'           => $url,
+            'post_parent'    => $post_id,
+            'post_title'     => $title,
+            'post_content'   => $content,
+            'post_excerpt'   => $excerpt,
+        ),
+        $post_data
+    );
+ 
+    // This should never be set as it would then overwrite an existing attachment.
+    unset( $attachment['ID'] );
+ 
+    // Save the data.
+    $attachment_id = wp_insert_attachment( $attachment, $file, $post_id, true );
+ 
+    if ( ! is_wp_error( $attachment_id ) ) {
+        // Set a custom header with the attachment_id.
+        // Used by the browser/client to resume creating image sub-sizes after a PHP fatal error.
+        if ( ! headers_sent() ) {
+            header( 'X-WP-Upload-Attachment-ID: ' . $attachment_id );
+        }
+ 
+        // The image sub-sizes are created during wp_generate_attachment_metadata().
+        // This is generally slow and may cause timeouts or out of memory errors.
+        wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $file ) );
+    }
+ 
+    return $attachment_id;
+}
+
 /*===================== CODING IN PROGRESS =====================*/ 
 /* Next Steps:
 * - Need to end Basic Things
